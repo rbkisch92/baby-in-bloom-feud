@@ -399,11 +399,10 @@ def render_css():
     h1, h2, h3, .stMarkdown, .stText, label, p, div {
         font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
     }
-    .title-wrap { max-width: 1080px; margin: 0 auto 18px auto; padding: 28px 18px 18px; text-align:center; }
-    .clothesline { font-size: 28px; letter-spacing: 8px; opacity: .72; margin-bottom: 10px; color: var(--sage); }
-    .title { text-align:center; font-family:'SophiaRonald','Brush Script MT',cursive; font-size:84px; font-weight:400; line-height:.96; color:var(--rose); text-shadow:0 3px 0 rgba(255,255,255,.88), 0 10px 20px rgba(141,83,99,.16); margin:0; }
-    .subtitle { text-align:center; font-size:28px; color:var(--sage); font-weight:600; letter-spacing:.5px; margin-top:14px; }
-    .floral-divider { color:var(--lavender); font-size:24px; text-align:center; margin:12px 0 22px; opacity:.9; }
+    .title-wrap { max-width: 1180px; margin: 0 auto 22px auto; padding: 34px 18px 22px; text-align:center; }
+    .title { text-align:center; font-family:'Cormorant Garamond', Georgia, 'Times New Roman', serif; font-size:112px; font-weight:500; letter-spacing:6px; text-transform:uppercase; line-height:.98; color:var(--rose); text-shadow:0 3px 0 rgba(255,255,255,.9), 0 12px 24px rgba(141,83,99,.14); margin:0; }
+    .subtitle { text-align:center; font-size:30px; color:var(--sage); font-weight:600; letter-spacing:.8px; margin-top:18px; }
+    .floral-divider { display:none; }
     .board { background:rgba(255,251,246,.92); color:var(--rose-dark); border:2px solid rgba(183,121,138,.5); border-radius:28px; padding:30px 28px; font-size:38px; font-weight:700; text-align:center; box-shadow:0 14px 34px var(--shadow); margin:22px auto; max-width:1120px; position:relative; }
     .board:before, .board:after { content:'✿'; color:var(--lavender); position:absolute; top:50%; transform:translateY(-50%); font-size:24px; opacity:.75; }
     .board:before { left:18px; } .board:after { right:18px; }
@@ -420,9 +419,8 @@ def render_css():
     input, textarea, select, [data-baseweb="select"] > div { border-radius:16px !important; }
     .stProgress > div > div > div > div { background-color:var(--sage) !important; }
     @media (max-width:700px) {
-        .title { font-size:56px; }
+        .title { font-size:54px; letter-spacing:3px; }
         .subtitle { font-size:22px; }
-        .clothesline { font-size:20px; letter-spacing:5px; }
         .board { font-size:27px; padding:22px 18px; }
         .board:before, .board:after { display:none; }
         .answer-grid { grid-template-columns:1fr; gap:10px; }
@@ -436,10 +434,8 @@ def render_header():
     st.markdown(
         f"""
         <div class="title-wrap">
-            <div class="clothesline">♡ 𓍯 ✿ 𓍯 ♡</div>
             <div class="title">{APP_TITLE}</div>
             <div class="subtitle">Tournament Edition</div>
-            <div class="floral-divider">lavender • clover • chamomile • baby’s breath</div>
         </div>
         """,
         unsafe_allow_html=True,
