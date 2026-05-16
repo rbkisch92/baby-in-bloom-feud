@@ -157,7 +157,8 @@ st.markdown(
     --lavender: #A58BB7;
     --soft-lavender: #EADFED;
     --border-lavender: #D8C4DD;
-    --dusty-rose: #B77286;
+    --dusty-rose: #A58BB7;
+    --blush-pink: #E8C7D0;
     --sage: #7D8F68;
 }
 
@@ -220,7 +221,7 @@ html, body, .stApp {
 }
 
 .answer-hidden {
-    color: var(--lavender) !important;
+    color: var(--blush-pink) !important;
     text-align: center;
     justify-content: center;
     font-weight: 700;
@@ -268,7 +269,7 @@ html, body, .stApp {
 
 .stButton button:hover {
     border-color: var(--dusty-rose) !important;
-    color: var(--dusty-rose) !important;
+    color: var(--lavender) !important;
 }
 
 section[data-testid="stSidebar"] {
@@ -280,6 +281,44 @@ section[data-testid="stSidebar"] * {
 }
 
 input, textarea, select {
+    color: var(--plum) !important;
+    background: #FFFFFF !important;
+}
+
+.stTextInput input,
+.stTextArea textarea,
+.stSelectbox div[data-baseweb="select"] > div,
+div[data-baseweb="input"] input,
+div[data-baseweb="textarea"] textarea {
+    background: #FFFFFF !important;
+    color: var(--plum) !important;
+}
+
+.stTextInput input::placeholder,
+.stTextArea textarea::placeholder {
+    color: var(--lavender) !important;
+    opacity: 1 !important;
+}
+
+
+/* Force any Streamlit default white foreground text to blush pink */
+.stAlert,
+.stAlert *,
+[data-testid="stNotification"],
+[data-testid="stNotification"] *,
+[data-testid="stToast"],
+[data-testid="stToast"] *,
+button[kind="primary"],
+button[kind="primary"] *,
+.st-emotion-cache-1kyxreq,
+.st-emotion-cache-1kyxreq * {
+    color: var(--blush-pink) !important;
+}
+
+/* Keep typed input areas white and readable */
+[contenteditable="true"],
+[role="textbox"] {
+    background: #FFFFFF !important;
     color: var(--plum) !important;
 }
 
