@@ -400,7 +400,7 @@ def render_css():
         font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
     }
     .title-wrap { max-width: 1180px; margin: 0 auto 22px auto; padding: 34px 18px 22px; text-align:center; }
-    .title { text-align:center; font-family:'Cormorant Garamond', Georgia, 'Times New Roman', serif; font-size:112px; font-weight:500; letter-spacing:6px; text-transform:uppercase; line-height:.98; color:var(--rose); text-shadow:0 3px 0 rgba(255,255,255,.9), 0 12px 24px rgba(141,83,99,.14); margin:0; }
+    .title { text-align:center; font-family:'Cormorant Garamond', Georgia, 'Times New Roman', serif; font-size:112px; font-weight:500; letter-spacing:6px; text-transform:uppercase; line-height:.98; color:var(--rose); text-shadow:0 3px 0 rgba(190,255,255,.9), 0 12px 24px rgba(141,83,99,.14); margin:0; }
     .subtitle { text-align:center; font-size:30px; color:var(--sage); font-weight:600; letter-spacing:.8px; margin-top:18px; }
     .floral-divider { display:none; }
     .board { background:rgba(255,251,246,.92); color:var(--rose-dark); border:2px solid rgba(183,121,138,.5); border-radius:28px; padding:30px 28px; font-size:38px; font-weight:700; text-align:center; box-shadow:0 14px 34px var(--shadow); margin:22px auto; max-width:1120px; position:relative; }
@@ -451,7 +451,7 @@ def render_css():
     .stDownloadButton > button:disabled,
     div[data-testid="stFormSubmitButton"] button:disabled {
         background:#d8bcc5 !important;
-        color:##CDB8D8 !important;
+        color:#ffffff !important;
         opacity:.72 !important;
     }
     input, textarea, select, [data-baseweb="select"] > div {
