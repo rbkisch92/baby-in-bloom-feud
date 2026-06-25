@@ -1013,16 +1013,41 @@ section[data-testid="stSidebar"] {{
     background: {active_theme["sidebar"]} !important;
 }}
 
-/* Center game area: solid theme color with 40% transparency so uploaded backgrounds stay outside/behind it. */
-.block-container {{
-    background: rgba({center_panel_rgb[0]}, {center_panel_rgb[1]}, {center_panel_rgb[2]}, 0.60) !important;
-    border: 1px solid rgba({center_panel_rgb[0]}, {center_panel_rgb[1]}, {center_panel_rgb[2]}, 0.75) !important;
+/*
+   Center panel layout:
+   - The uploaded background image stays on the outside page.
+   - The game itself sits in a centered solid-color panel.
+   - 0.60 opacity = 40% transparent.
+*/
+[data-testid="stAppViewContainer"] > .main {{
+    background: transparent !important;
+}}
+
+/* Streamlit uses different block-container test IDs/classes across versions, so target both. */
+.block-container,
+[data-testid="stAppViewBlockContainer"] {{
+    max-width: min(1180px, calc(100vw - 120px)) !important;
+    width: min(1180px, calc(100vw - 120px)) !important;
+    min-height: calc(100vh - 2rem) !important;
+    background-color: rgba({center_panel_rgb[0]}, {center_panel_rgb[1]}, {center_panel_rgb[2]}, 0.60) !important;
+    background-image: none !important;
+    border: 1px solid rgba({center_panel_rgb[0]}, {center_panel_rgb[1]}, {center_panel_rgb[2]}, 0.85) !important;
     border-radius: 28px !important;
     padding: 2rem 2.5rem 3rem 2.5rem !important;
-    margin-top: 1rem !important;
-    margin-bottom: 2rem !important;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08) !important;
-    backdrop-filter: blur(1px);
+    margin: 1rem auto 2rem auto !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18) !important;
+    backdrop-filter: blur(2px);
+}}
+
+/* Keep phones usable: on small screens the panel can use nearly the full width. */
+@media (max-width: 900px) {{
+    .block-container,
+    [data-testid="stAppViewBlockContainer"] {{
+        width: calc(100vw - 24px) !important;
+        max-width: calc(100vw - 24px) !important;
+        padding: 1.25rem !important;
+        margin: 0.75rem auto 1.5rem auto !important;
+    }}
 }}
 </style>
 """,
@@ -1035,11 +1060,17 @@ if state.get("background_image_data") and state.get("background_image_mime"):
     st.markdown(
         f"""
 <style>
-.stApp {{
+html, body, .stApp, [data-testid="stAppViewContainer"] {{
     background-image: url('data:{state["background_image_mime"]};base64,{state["background_image_data"]}') !important;
     background-size: cover !important;
     background-position: center center !important;
     background-attachment: fixed !important;
+}}
+
+/* Do not let the image become the game board background. */
+.block-container,
+[data-testid="stAppViewBlockContainer"] {{
+    background-image: none !important;
 }}
 </style>
 """,
