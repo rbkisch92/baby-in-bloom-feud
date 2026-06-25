@@ -981,6 +981,7 @@ def inject_css(state):
 
 html, body, .stApp {{
     min-height: 100vh;
+    overflow-y: auto !important;
     color: var(--plum) !important;
     font-family: {body_font} !important;
 }}
@@ -1022,28 +1023,17 @@ html, body, .stApp {{
 
 /*
    Center panel layout:
-   The transparent panel is a full-height layer behind the content.
-   This avoids Streamlit shrinking the panel to only the content height.
+   The transparent panel is painted as a background stripe, not an overlay.
+   Background paint cannot block or trap page scrolling.
 */
-[data-testid="stMain"] {{
-    display: block !important;
-    position: relative !important;
-    overflow: visible !important;
-}}
-
-[data-testid="stMain"]::before {{
-    content: "";
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(1120px, calc(100vw - 4rem));
-    height: 100vh;
-    background: {panel_rgba};
-    box-shadow: 0 0 35px rgba(0,0,0,0.08);
-    pointer-events: none;
-    z-index: 1;
+[data-testid="stAppViewContainer"] {{
+    background:
+        linear-gradient(
+            90deg,
+            transparent 0 max(2rem, calc((100vw - 1120px) / 2)),
+            {panel_rgba} max(2rem, calc((100vw - 1120px) / 2)) calc(100vw - max(2rem, calc((100vw - 1120px) / 2))),
+            transparent calc(100vw - max(2rem, calc((100vw - 1120px) / 2))) 100%
+        ) !important;
 }}
 
 .main .block-container,
@@ -1065,7 +1055,8 @@ html, body, .stApp {{
 section[data-testid="stSidebar"] {{
     height: 100vh !important;
     max-height: 100vh !important;
-    overflow: hidden !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
 }}
 
 section[data-testid="stSidebar"] > div:first-child,
@@ -1078,8 +1069,8 @@ section[data-testid="stSidebar"] [data-testid="stSidebarContent"] {{
 }}
 
 @media (max-width: 900px) {{
-    [data-testid="stMain"]::before {{
-        width: 100% !important;
+    [data-testid="stAppViewContainer"] {{
+        background: {panel_rgba} !important;
     }}
 
     .main .block-container,
