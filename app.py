@@ -1018,35 +1018,14 @@ section[data-testid="stSidebar"] {{
 }}
 
 /*
-   Full-height center panel layout:
+   Center panel layout:
    - The uploaded background image stays on the outside page.
-   - A fixed center column creates the 20% transparent panel from top to bottom.
-   - The Streamlit content sits on top of that panel.
-   - 0.80 alpha = 20% transparent.
+   - The game itself sits in a centered solid-color panel.
+   - 0.80 opacity = 20% transparent.
 */
 [data-testid="stAppViewContainer"] > .main {{
     background: transparent !important;
     min-height: 100vh !important;
-    position: relative !important;
-}}
-
-/* This fixed pseudo-element is the center panel. Because it is fixed from top to bottom,
-   it visually extends to the bottom of the screen even when the Streamlit content is short. */
-[data-testid="stAppViewContainer"] > .main::before {{
-    content: "";
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(1180px, calc(100vw - 120px));
-    background-color: rgba({center_panel_rgb[0]}, {center_panel_rgb[1]}, {center_panel_rgb[2]}, 0.80) !important;
-    border-left: 1px solid rgba({center_panel_rgb[0]}, {center_panel_rgb[1]}, {center_panel_rgb[2]}, 0.85) !important;
-    border-right: 1px solid rgba({center_panel_rgb[0]}, {center_panel_rgb[1]}, {center_panel_rgb[2]}, 0.85) !important;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18) !important;
-    backdrop-filter: blur(2px);
-    pointer-events: none;
-    z-index: 0;
 }}
 
 /* Streamlit uses different block-container test IDs/classes across versions, so target both. */
@@ -1055,22 +1034,18 @@ section[data-testid="stSidebar"] {{
     max-width: min(1180px, calc(100vw - 120px)) !important;
     width: min(1180px, calc(100vw - 120px)) !important;
     min-height: 100vh !important;
-    background: transparent !important;
+    background-color: rgba({center_panel_rgb[0]}, {center_panel_rgb[1]}, {center_panel_rgb[2]}, 0.80) !important;
     background-image: none !important;
-    border: none !important;
-    border-radius: 0 !important;
+    border: 1px solid rgba({center_panel_rgb[0]}, {center_panel_rgb[1]}, {center_panel_rgb[2]}, 0.85) !important;
+    border-radius: 28px !important;
     padding: 2rem 2.5rem 3rem 2.5rem !important;
     margin: 0 auto !important;
-    box-shadow: none !important;
-    position: relative !important;
-    z-index: 1 !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18) !important;
+    backdrop-filter: blur(2px);
 }}
 
 /* Keep phones usable: on small screens the panel can use nearly the full width. */
 @media (max-width: 900px) {{
-    [data-testid="stAppViewContainer"] > .main::before {{
-        width: calc(100vw - 24px) !important;
-    }}
     .block-container,
     [data-testid="stAppViewBlockContainer"] {{
         width: calc(100vw - 24px) !important;
@@ -1685,7 +1660,7 @@ if view == "host":
             state["center_panel_color"] = new_panel_color
             save_state(state)
             st.rerun()
-        st.caption("The center panel uses this color at 80% opacity, meaning it is 20% transparent. It is fixed from top to bottom so it always reaches the bottom of the screen.")
+        st.caption("The center panel uses this color at 80% opacity, meaning it is 20% transparent. It extends to the bottom of the page.")
 
     with st.sidebar.expander("Event Theme + Preset Questions", expanded=True):
         theme_names = list(THEMES.keys())
