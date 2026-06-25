@@ -1018,48 +1018,39 @@ section[data-testid="stSidebar"] {{
 }}
 
 /*
-   Fixed center-panel layout:
-   - The uploaded image/color lives on the outer app background.
-   - A fixed pseudo-element creates the center panel from top to bottom.
-   - The Streamlit content itself stays transparent and sits above that panel.
-   - This prevents the panel from ending early when Streamlit's content container is shorter than the page.
+   Center-panel layout using layered backgrounds:
+   - The uploaded image is the outside/background layer.
+   - A centered solid-color stripe is layered above it.
+   - Because it is a background layer, it always extends to the bottom of the viewport/page.
 */
+:root {{
+    --center-panel-width: min(1180px, calc(100vw - 120px));
+}}
+
 html, body, .stApp, [data-testid="stAppViewContainer"] {{
     min-height: 100vh !important;
     overflow-x: hidden !important;
+    background-color: var(--paper) !important;
+    background-image: linear-gradient(
+        rgba({center_panel_rgb[0]}, {center_panel_rgb[1]}, {center_panel_rgb[2]}, 0.80),
+        rgba({center_panel_rgb[0]}, {center_panel_rgb[1]}, {center_panel_rgb[2]}, 0.80)
+    ) !important;
+    background-size: var(--center-panel-width) 100% !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
 }}
 
 [data-testid="stAppViewContainer"] > .main {{
     background: transparent !important;
     min-height: 100vh !important;
-    position: relative !important;
-    z-index: 1 !important;
 }}
 
-/* Full-height center panel behind the content */
-.stApp::before {{
-    content: "";
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(1180px, calc(100vw - 120px));
-    min-height: 100vh;
-    background-color: rgba({center_panel_rgb[0]}, {center_panel_rgb[1]}, {center_panel_rgb[2]}, 0.80);
-    border-left: 1px solid rgba({center_panel_rgb[0]}, {center_panel_rgb[1]}, {center_panel_rgb[2]}, 0.90);
-    border-right: 1px solid rgba({center_panel_rgb[0]}, {center_panel_rgb[1]}, {center_panel_rgb[2]}, 0.90);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
-    backdrop-filter: blur(2px);
-    pointer-events: none;
-    z-index: 0;
-}}
-
-/* Streamlit content column: transparent, same width as the fixed panel */
+/* Streamlit content column: transparent, same width as the center panel */
 .block-container,
 [data-testid="stAppViewBlockContainer"] {{
-    max-width: min(1180px, calc(100vw - 120px)) !important;
-    width: min(1180px, calc(100vw - 120px)) !important;
+    max-width: var(--center-panel-width) !important;
+    width: var(--center-panel-width) !important;
     min-height: 100vh !important;
     background: transparent !important;
     background-image: none !important;
@@ -1068,26 +1059,19 @@ html, body, .stApp, [data-testid="stAppViewContainer"] {{
     padding: 2rem 2.5rem 4rem 2.5rem !important;
     margin: 0 auto !important;
     box-shadow: none !important;
-    position: relative !important;
-    z-index: 2 !important;
 }}
 
 /* Keep phones usable: on small screens the center panel gets wider. */
 @media (max-width: 900px) {{
-    .stApp::before {{
-        width: calc(100vw - 24px);
+    :root {{
+        --center-panel-width: calc(100vw - 24px);
     }}
 
     .block-container,
     [data-testid="stAppViewBlockContainer"] {{
-        width: calc(100vw - 24px) !important;
-        max-width: calc(100vw - 24px) !important;
-        min-height: 100vh !important;
         padding: 1.25rem 1rem 3rem 1rem !important;
-        margin: 0 auto !important;
     }}
-}}
-</style>
+}}</style>
 """,
     unsafe_allow_html=True,
 )
@@ -1099,10 +1083,16 @@ if state.get("background_image_data") and state.get("background_image_mime"):
         f"""
 <style>
 html, body, .stApp, [data-testid="stAppViewContainer"] {{
-    background-image: url('data:{state["background_image_mime"]};base64,{state["background_image_data"]}') !important;
-    background-size: cover !important;
-    background-position: center center !important;
-    background-attachment: fixed !important;
+    background-image:
+        linear-gradient(
+            rgba({center_panel_rgb[0]}, {center_panel_rgb[1]}, {center_panel_rgb[2]}, 0.80),
+            rgba({center_panel_rgb[0]}, {center_panel_rgb[1]}, {center_panel_rgb[2]}, 0.80)
+        ),
+        url('data:{state["background_image_mime"]};base64,{state["background_image_data"]}') !important;
+    background-size: var(--center-panel-width) 100%, cover !important;
+    background-position: center top, center center !important;
+    background-repeat: no-repeat, no-repeat !important;
+    background-attachment: fixed, fixed !important;
 }}
 
 </style>
