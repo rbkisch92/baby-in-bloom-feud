@@ -91,90 +91,172 @@ DEFAULT_FAST_MONEY_QUESTIONS = [
 
 
 THEMES = {
-    "Purple": {
-        "paper": "#F8F5F0",
-        "cream": "#FFFAF8",
-        "primary": "#6E5873",
-        "secondary": "#A58BB7",
-        "accent": "#EADFED",
-        "border": "#D8C4DD",
-        "highlight": "#E8C7D0",
-        "sidebar": "#F2EAF4",
+    "Classic Party": {
+        "paper": "#F8F5F0", "cream": "#FFFAF8", "primary": "#6E5873", "secondary": "#A58BB7",
+        "accent": "#EADFED", "border": "#D8C4DD", "highlight": "#E8C7D0", "sidebar": "#F2EAF4",
     },
-    "Blue": {
-        "paper": "#F5F9FD",
-        "cream": "#FFFFFF",
-        "primary": "#355C7D",
-        "secondary": "#5D8AA8",
-        "accent": "#D8EAF8",
-        "border": "#B8D5EA",
-        "highlight": "#C8E5FF",
-        "sidebar": "#E7F2FB",
+    "Baby Shower - Boy": {
+        "paper": "#F5F9FD", "cream": "#FFFFFF", "primary": "#355C7D", "secondary": "#5D8AA8",
+        "accent": "#D8EAF8", "border": "#B8D5EA", "highlight": "#C8E5FF", "sidebar": "#E7F2FB",
     },
-    "Sage": {
-        "paper": "#F7F7F0",
-        "cream": "#FFFDF8",
-        "primary": "#59684A",
-        "secondary": "#7D8F68",
-        "accent": "#E4EAD8",
-        "border": "#C9D4B8",
-        "highlight": "#DDEBCB",
-        "sidebar": "#EEF3E6",
+    "Baby Shower - Girl": {
+        "paper": "#FFF7FA", "cream": "#FFFFFF", "primary": "#7A4E68", "secondary": "#C47FA0",
+        "accent": "#F4DCE8", "border": "#E7BFD2", "highlight": "#FFD6E7", "sidebar": "#FBEAF2",
     },
-    "Woodland Neutral": {
-        "paper": "#F8F6F0",
-        "cream": "#FFFDF8",
-        "primary": "#5B4B3A",
-        "secondary": "#8A765D",
-        "accent": "#E7E2D5",
-        "border": "#D2C7B8",
-        "highlight": "#D7E5C8",
-        "sidebar": "#F0EADF",
+    "Gender Neutral Baby Shower": {
+        "paper": "#F7F7F0", "cream": "#FFFDF8", "primary": "#59684A", "secondary": "#7D8F68",
+        "accent": "#E4EAD8", "border": "#C9D4B8", "highlight": "#DDEBCB", "sidebar": "#EEF3E6",
     },
-    "Wildflower": {
-        "paper": "#FFFDF8",
-        "cream": "#FFFFFF",
-        "primary": "#4D5A4B",
-        "secondary": "#D29BB8",
-        "accent": "#E8D7E4",
-        "border": "#DCCBBF",
-        "highlight": "#F4E5A4",
-        "sidebar": "#F7EEF5",
+    "Bachelor Party": {
+        "paper": "#F6F4EF", "cream": "#FFFFFF", "primary": "#252525", "secondary": "#8A6F3D",
+        "accent": "#E8DEC3", "border": "#C8B889", "highlight": "#D4AF37", "sidebar": "#EEE7D8",
     },
-    "Sunflower": {
-        "paper": "#FFF9E8",
-        "cream": "#FFFFFF",
-        "primary": "#6A4A1F",
-        "secondary": "#C68B20",
-        "accent": "#F8E6A8",
-        "border": "#E6C66E",
-        "highlight": "#FFE08A",
-        "sidebar": "#FFF1C8",
+    "Bachelorette Party": {
+        "paper": "#FFF6FB", "cream": "#FFFFFF", "primary": "#7A255B", "secondary": "#D95FA7",
+        "accent": "#F8D3EA", "border": "#EDAED6", "highlight": "#FFC2E6", "sidebar": "#FCE4F3",
+    },
+    "Bridal Shower": {
+        "paper": "#FFFDF8", "cream": "#FFFFFF", "primary": "#5F5449", "secondary": "#B98F78",
+        "accent": "#F1E3DA", "border": "#DBC4B6", "highlight": "#F7D8C7", "sidebar": "#F8EEE8",
+    },
+    "Birthday Party": {
+        "paper": "#FFF9E8", "cream": "#FFFFFF", "primary": "#5E3B76", "secondary": "#E18F2F",
+        "accent": "#FBE6B8", "border": "#E8C97A", "highlight": "#FFE08A", "sidebar": "#FFF1C8",
+    },
+    "Holiday Party": {
+        "paper": "#F8FAF8", "cream": "#FFFFFF", "primary": "#28513A", "secondary": "#A53636",
+        "accent": "#E4EFE6", "border": "#BFD6C4", "highlight": "#F2C7C7", "sidebar": "#EAF4EC",
     },
     "Custom": {
-        "paper": "#F8F5F0",
-        "cream": "#FFFAF8",
-        "primary": "#6E5873",
-        "secondary": "#A58BB7",
-        "accent": "#EADFED",
-        "border": "#D8C4DD",
-        "highlight": "#E8C7D0",
-        "sidebar": "#F2EAF4",
+        "paper": "#F8F5F0", "cream": "#FFFAF8", "primary": "#6E5873", "secondary": "#A58BB7",
+        "accent": "#EADFED", "border": "#D8C4DD", "highlight": "#E8C7D0", "sidebar": "#F2EAF4",
     },
 }
 
+
+EVENT_QUESTION_PRESETS = {
+    "Classic Party": {
+        "main": [
+            {"question": "Name something people bring to a party.", "answers": [["Drinks", 35], ["Food", 25], ["Gift", 15], ["Dessert", 10], ["Flowers", 8], ["Games", 7]]},
+            {"question": "Name something people do at a celebration.", "answers": [["Dance", 35], ["Eat", 25], ["Drink", 20], ["Talk", 12], ["Take pictures", 8]]},
+            {"question": "Name something you see on a party table.", "answers": [["Food", 35], ["Drinks", 25], ["Plates", 15], ["Flowers", 15], ["Candles", 10]]},
+            {"question": "Name a reason someone arrives late.", "answers": [["Traffic", 40], ["Getting ready", 25], ["Lost", 15], ["Work", 10], ["Parking", 10]]},
+        ],
+        "fast_money": DEFAULT_FAST_MONEY_QUESTIONS,
+    },
+    "Baby Shower - Boy": {
+        "main": [
+            {"question": "Name something parents always carry in a diaper bag.", "answers": [["Diapers", 35], ["Wipes", 25], ["Bottle", 15], ["Snacks", 10], ["Extra clothes", 8], ["Pacifier", 7]]},
+            {"question": "Name something blue you might see at a baby shower.", "answers": [["Balloons", 30], ["Cake", 25], ["Decorations", 20], ["Plates", 10], ["Flowers", 8], ["Outfit", 7]]},
+            {"question": "Name a gift people buy for a baby boy.", "answers": [["Clothes", 35], ["Blanket", 25], ["Toys", 18], ["Diapers", 12], ["Books", 6], ["Shoes", 4]]},
+            {"question": "Name something babies need every day.", "answers": [["Diapers", 35], ["Milk", 30], ["Sleep", 18], ["Clothes", 10], ["Love", 7]]},
+        ],
+        "fast_money": DEFAULT_FAST_MONEY_QUESTIONS,
+    },
+    "Baby Shower - Girl": {
+        "main": [
+            {"question": "Name something pink you might see at a baby shower.", "answers": [["Balloons", 30], ["Cake", 25], ["Flowers", 20], ["Decorations", 15], ["Plates", 6], ["Ribbon", 4]]},
+            {"question": "Name a gift people buy for a baby girl.", "answers": [["Clothes", 35], ["Blanket", 25], ["Headbands", 15], ["Toys", 12], ["Books", 8], ["Diapers", 5]]},
+            {"question": "Name something parents always carry in a diaper bag.", "answers": [["Diapers", 35], ["Wipes", 25], ["Bottle", 15], ["Snacks", 10], ["Extra clothes", 8], ["Pacifier", 7]]},
+            {"question": "Name something babies do that makes everyone say 'aww'.", "answers": [["Smile", 40], ["Laugh", 25], ["Sleep", 15], ["Wave", 10], ["Cuddle", 10]]},
+        ],
+        "fast_money": DEFAULT_FAST_MONEY_QUESTIONS,
+    },
+    "Gender Neutral Baby Shower": {
+        "main": [
+            {"question": "Name a popular baby shower decoration.", "answers": [["Balloons", 35], ["Flowers", 25], ["Banner", 15], ["Cake", 12], ["Tableware", 8], ["Centerpieces", 5]]},
+            {"question": "Name something every new parent needs.", "answers": [["Diapers", 35], ["Sleep", 25], ["Wipes", 18], ["Help", 12], ["Patience", 6], ["Coffee", 4]]},
+            {"question": "Name a baby shower game people play.", "answers": [["Guess the belly", 30], ["Don't say baby", 25], ["Diaper raffle", 20], ["Baby bingo", 15], ["Price is right", 10]]},
+            {"question": "Name something babies make a lot of.", "answers": [["Noise", 30], ["Mess", 25], ["Laundry", 20], ["Smiles", 15], ["Diapers", 10]]},
+        ],
+        "fast_money": DEFAULT_FAST_MONEY_QUESTIONS,
+    },
+    "Bachelor Party": {
+        "main": [
+            {"question": "Name something people do at a bachelor party.", "answers": [["Drink", 35], ["Go out", 25], ["Play games", 15], ["Eat", 10], ["Golf", 8], ["Take pictures", 7]]},
+            {"question": "Name something the groom might forget to pack.", "answers": [["Toothbrush", 30], ["Suit", 25], ["Wallet", 20], ["Phone charger", 15], ["Shoes", 10]]},
+            {"question": "Name a place people go for a bachelor party.", "answers": [["Vegas", 40], ["Bar", 25], ["Golf course", 15], ["Beach", 10], ["Cabin", 10]]},
+            {"question": "Name something people toast to at a bachelor party.", "answers": [["The groom", 40], ["Marriage", 25], ["Friendship", 15], ["Good luck", 12], ["The future", 8]]},
+        ],
+        "fast_money": [
+            {"question": "Name something people do on a guys' trip.", "answers": [["Drink", 35], ["Golf", 25], ["Eat", 15], ["Watch sports", 15], ["Gamble", 10]]},
+            {"question": "Name something people pack for a weekend trip.", "answers": [["Clothes", 35], ["Toiletries", 25], ["Phone charger", 20], ["Shoes", 10], ["Snacks", 10]]},
+            {"question": "Name a bachelor party destination.", "answers": [["Vegas", 45], ["Nashville", 20], ["Miami", 15], ["Lake Tahoe", 10], ["Austin", 10]]},
+            {"question": "Name something found in a hotel room.", "answers": [["Bed", 40], ["Towels", 25], ["TV", 15], ["Mini fridge", 10], ["Shampoo", 10]]},
+            {"question": "Name something people regret after a night out.", "answers": [["Drinking too much", 35], ["Spending money", 25], ["Staying out late", 20], ["Bad photos", 10], ["Texting", 10]]},
+        ],
+    },
+    "Bachelorette Party": {
+        "main": [
+            {"question": "Name something people wear to a bachelorette party.", "answers": [["Dress", 30], ["Sash", 25], ["Cowboy boots", 15], ["Matching shirts", 12], ["Veil", 10], ["Heels", 8]]},
+            {"question": "Name something you see at a bachelorette party.", "answers": [["Balloons", 30], ["Cocktails", 25], ["Decorations", 20], ["Bride sash", 15], ["Photo props", 10]]},
+            {"question": "Name a popular bachelorette destination.", "answers": [["Nashville", 35], ["Vegas", 25], ["Miami", 15], ["Scottsdale", 15], ["Palm Springs", 10]]},
+            {"question": "Name something the bride might do during a bachelorette weekend.", "answers": [["Dance", 30], ["Drink", 25], ["Take photos", 20], ["Pool day", 15], ["Open gifts", 10]]},
+        ],
+        "fast_money": [
+            {"question": "Name something people pack for a girls' trip.", "answers": [["Outfits", 35], ["Makeup", 25], ["Shoes", 20], ["Swimsuit", 10], ["Phone charger", 10]]},
+            {"question": "Name a bachelorette party activity.", "answers": [["Dancing", 35], ["Pool day", 25], ["Dinner", 20], ["Bar hopping", 10], ["Games", 10]]},
+            {"question": "Name something you put on a party itinerary.", "answers": [["Dinner", 30], ["Drinks", 25], ["Pool", 20], ["Brunch", 15], ["Photos", 10]]},
+            {"question": "Name a drink ordered at a bachelorette party.", "answers": [["Margarita", 30], ["Champagne", 25], ["Martini", 20], ["Vodka soda", 15], ["Wine", 10]]},
+            {"question": "Name something people take photos with.", "answers": [["Bride", 35], ["Decor", 25], ["Balloons", 20], ["Drinks", 10], ["Group", 10]]},
+        ],
+    },
+    "Bridal Shower": {
+        "main": [
+            {"question": "Name something people bring to a bridal shower.", "answers": [["Gift", 40], ["Card", 25], ["Flowers", 15], ["Dessert", 10], ["Wine", 10]]},
+            {"question": "Name a common bridal shower gift.", "answers": [["Kitchen item", 35], ["Towels", 25], ["Candles", 15], ["Glassware", 15], ["Cookbook", 10]]},
+            {"question": "Name a bridal shower game.", "answers": [["How well do you know bride", 35], ["Gift bingo", 25], ["He said she said", 20], ["Advice cards", 10], ["Toilet paper dress", 10]]},
+            {"question": "Name something you see on a bridal shower table.", "answers": [["Flowers", 35], ["Cake", 25], ["Plates", 15], ["Candles", 15], ["Favors", 10]]},
+        ],
+        "fast_money": DEFAULT_FAST_MONEY_QUESTIONS,
+    },
+    "Birthday Party": {
+        "main": [
+            {"question": "Name something at almost every birthday party.", "answers": [["Cake", 40], ["Balloons", 25], ["Gifts", 15], ["Candles", 10], ["Music", 10]]},
+            {"question": "Name a birthday party activity.", "answers": [["Games", 35], ["Dancing", 25], ["Eating", 20], ["Opening gifts", 10], ["Photos", 10]]},
+            {"question": "Name a popular birthday dessert.", "answers": [["Cake", 45], ["Cupcakes", 25], ["Ice cream", 20], ["Cookies", 5], ["Pie", 5]]},
+            {"question": "Name something people say on someone's birthday.", "answers": [["Happy birthday", 50], ["Make a wish", 20], ["How old are you", 15], ["Congrats", 8], ["Many more", 7]]},
+        ],
+        "fast_money": DEFAULT_FAST_MONEY_QUESTIONS,
+    },
+    "Holiday Party": {
+        "main": [
+            {"question": "Name something people bring to a holiday party.", "answers": [["Dessert", 30], ["Wine", 25], ["Gift", 20], ["Side dish", 15], ["Cookies", 10]]},
+            {"question": "Name something you see at a holiday party.", "answers": [["Decorations", 35], ["Tree", 25], ["Lights", 20], ["Food", 10], ["Gifts", 10]]},
+            {"question": "Name a holiday party food.", "answers": [["Cookies", 30], ["Ham", 25], ["Turkey", 20], ["Pie", 15], ["Cheese board", 10]]},
+            {"question": "Name a holiday party activity.", "answers": [["Gift exchange", 35], ["Games", 25], ["Eating", 20], ["Singing", 10], ["Photos", 10]]},
+        ],
+        "fast_money": DEFAULT_FAST_MONEY_QUESTIONS,
+    },
+}
+
+
+def preset_questions_for_theme(theme_name):
+    preset = EVENT_QUESTION_PRESETS.get(theme_name) or EVENT_QUESTION_PRESETS["Classic Party"]
+    # Deep copy through JSON so changing the active game does not mutate the preset.
+    return json.loads(json.dumps(preset["main"])), json.loads(json.dumps(preset["fast_money"]))
+
+
+def apply_theme_question_preset(state, theme_name):
+    main_qs, fast_qs = preset_questions_for_theme(theme_name)
+    state["questions"] = main_qs
+    state["fast_money_questions"] = fast_qs
+    state["google_sheet_url"] = ""
+    state["current_question_index"] = 0
+    state["questions_source"] = f"preset:{theme_name}"
+    state["message"] = f"Loaded {theme_name} preset questions."
 
 def default_custom_theme():
     return THEMES["Custom"].copy()
 
 
 def get_theme_colors(state):
-    selected_theme = state.get("theme", "Purple")
+    selected_theme = state.get("theme", "Classic Party")
     if selected_theme == "Custom":
         custom = default_custom_theme()
         custom.update(state.get("custom_theme", {}) if isinstance(state.get("custom_theme"), dict) else {})
         return custom
-    return THEMES.get(selected_theme, THEMES["Purple"])
+    return THEMES.get(selected_theme, THEMES["Classic Party"])
 
 
 def default_state():
@@ -195,7 +277,7 @@ def default_state():
         "questions": DEFAULT_MAIN_QUESTIONS,
         "fast_money_questions": DEFAULT_FAST_MONEY_QUESTIONS,
         "google_sheet_url": "",
-        "theme": "Purple",
+        "theme": "Classic Party",
         "custom_theme": default_custom_theme(),
         "champion_team": "",
         "tournament_complete": False,
@@ -205,6 +287,7 @@ def default_state():
         "ended": False,
         "ended_reason": "",
         "ended_at": 0,
+        "questions_source": "preset:Classic Party",
         "message": "Welcome to Family Feud!",
     }
 
@@ -1255,23 +1338,31 @@ if view == "player":
 if view == "host":
     st.sidebar.header("Host Controls")
 
-    with st.sidebar.expander("Appearance", expanded=True):
+    with st.sidebar.expander("Event Theme + Preset Questions", expanded=True):
         theme_names = list(THEMES.keys())
-        current_theme_name = state.get("theme", "Purple")
+        current_theme_name = state.get("theme", "Classic Party")
         if current_theme_name not in theme_names:
-            current_theme_name = "Purple"
+            current_theme_name = "Classic Party"
 
         selected_theme = st.selectbox(
-            "Color Theme",
+            "Event Theme",
             theme_names,
             index=theme_names.index(current_theme_name),
+            help="This changes the game colors. For built-in event themes, it can also load matching preset questions.",
         )
 
         theme_changed = selected_theme != state.get("theme")
-        state["theme"] = selected_theme
+
+        if theme_changed:
+            state["theme"] = selected_theme
+            if selected_theme != "Custom":
+                apply_theme_question_preset(state, selected_theme)
+                reset_question_state()
+            save_state(state)
+            st.rerun()
 
         if selected_theme == "Custom":
-            st.caption("Choose your own colors for this game session.")
+            st.caption("Choose your own colors for this game session. Custom keeps the current questions unless you upload or load a preset separately.")
             custom_theme = default_custom_theme()
             custom_theme.update(state.get("custom_theme", {}) if isinstance(state.get("custom_theme"), dict) else {})
 
@@ -1286,18 +1377,25 @@ if view == "host":
 
             if custom_theme != state.get("custom_theme"):
                 state["custom_theme"] = custom_theme
-                theme_changed = True
+                save_state(state)
+                st.rerun()
+        else:
+            st.caption("Changing to this event theme automatically loads matching preset questions.")
+            if st.button("Reload Preset Questions for This Event"):
+                apply_theme_question_preset(state, selected_theme)
+                reset_question_state()
+                save_state(state)
+                st.success(f"Reloaded {selected_theme} preset questions.")
+                st.rerun()
 
+        current_source = state.get("questions_source", "preset:Classic Party")
         st.markdown(
             f'<div class="info-card"><strong>Preview:</strong><br>'
             f'<span style="color:{get_theme_colors(state)["primary"]};">Primary</span> • '
-            f'<span style="color:{get_theme_colors(state)["secondary"]};">Accent</span></div>',
+            f'<span style="color:{get_theme_colors(state)["secondary"]};">Accent</span><br>'
+            f'<span class="small-note">Questions: {current_source}</span></div>',
             unsafe_allow_html=True,
         )
-
-        if theme_changed:
-            save_state(state)
-            st.rerun()
 
     with st.sidebar.expander("Custom Questions", expanded=True):
         st.caption("Use the CSV template below. Required columns: game_type, question, answer, points. Use game_type values main or fast_money.")
@@ -1315,6 +1413,7 @@ if view == "host":
                 state["questions"] = main_qs
                 state["fast_money_questions"] = fast_qs
                 state["google_sheet_url"] = ""
+                state["questions_source"] = "uploaded CSV"
                 state["current_question_index"] = 0
                 reset_question_state()
                 save_state(state)
@@ -1331,6 +1430,7 @@ if view == "host":
                 state["questions"] = main_qs
                 state["fast_money_questions"] = fast_qs
                 state["google_sheet_url"] = csv_url
+                state["questions_source"] = "Google Sheet URL"
                 state["current_question_index"] = 0
                 reset_question_state()
                 save_state(state)
