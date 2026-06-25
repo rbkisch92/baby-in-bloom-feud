@@ -1018,17 +1018,23 @@ section[data-testid="stSidebar"] {{
 }}
 
 /*
-   Center panel layout:
-   - The uploaded background image stays on the outside page.
-   - The game itself sits in a centered solid-color panel.
-   - 0.80 opacity = 20% transparent.
+   Recommended layout:
+   - The whole app has the uploaded image/color as the outside background.
+   - Streamlit's main content container becomes the centered game panel.
+   - The panel uses a solid host-selected color at 80% opacity = 20% transparent.
+   - min-height: 100vh makes the panel extend to the bottom of the viewport.
 */
+html, body, .stApp, [data-testid="stAppViewContainer"] {{
+    min-height: 100vh !important;
+    overflow-x: hidden !important;
+}}
+
 [data-testid="stAppViewContainer"] > .main {{
     background: transparent !important;
     min-height: 100vh !important;
 }}
 
-/* Streamlit uses different block-container test IDs/classes across versions, so target both. */
+/* Center game panel */
 .block-container,
 [data-testid="stAppViewBlockContainer"] {{
     max-width: min(1180px, calc(100vw - 120px)) !important;
@@ -1036,23 +1042,24 @@ section[data-testid="stSidebar"] {{
     min-height: 100vh !important;
     background-color: rgba({center_panel_rgb[0]}, {center_panel_rgb[1]}, {center_panel_rgb[2]}, 0.80) !important;
     background-image: none !important;
-    border: 1px solid rgba({center_panel_rgb[0]}, {center_panel_rgb[1]}, {center_panel_rgb[2]}, 0.85) !important;
-    border-radius: 28px !important;
-    padding: 2rem 2.5rem 3rem 2.5rem !important;
+    border-left: 1px solid rgba({center_panel_rgb[0]}, {center_panel_rgb[1]}, {center_panel_rgb[2]}, 0.90) !important;
+    border-right: 1px solid rgba({center_panel_rgb[0]}, {center_panel_rgb[1]}, {center_panel_rgb[2]}, 0.90) !important;
+    border-radius: 0 !important;
+    padding: 2rem 2.5rem 4rem 2.5rem !important;
     margin: 0 auto !important;
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18) !important;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px) !important;
 }}
 
-/* Keep phones usable: on small screens the panel can use nearly the full width. */
+/* Keep phones usable: on small screens the center panel gets wider. */
 @media (max-width: 900px) {{
     .block-container,
     [data-testid="stAppViewBlockContainer"] {{
         width: calc(100vw - 24px) !important;
         max-width: calc(100vw - 24px) !important;
-        padding: 1.25rem !important;
-        margin: 0 auto !important;
         min-height: 100vh !important;
+        padding: 1.25rem 1rem 3rem 1rem !important;
+        margin: 0 auto !important;
     }}
 }}
 </style>
@@ -1073,11 +1080,6 @@ html, body, .stApp, [data-testid="stAppViewContainer"] {{
     background-attachment: fixed !important;
 }}
 
-/* Do not let the image become the game board background. */
-.block-container,
-[data-testid="stAppViewBlockContainer"] {{
-    background-image: none !important;
-}}
 </style>
 """,
         unsafe_allow_html=True,
@@ -1660,7 +1662,7 @@ if view == "host":
             state["center_panel_color"] = new_panel_color
             save_state(state)
             st.rerun()
-        st.caption("The center panel uses this color at 80% opacity, meaning it is 20% transparent. It extends to the bottom of the page.")
+        st.caption("The center panel uses this color at 80% opacity, meaning it is 20% transparent. It is fixed from top to bottom so it always reaches the bottom of the screen.")
 
     with st.sidebar.expander("Event Theme + Preset Questions", expanded=True):
         theme_names = list(THEMES.keys())
