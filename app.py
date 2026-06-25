@@ -17,11 +17,11 @@ except Exception:
 
 
 # ============================================================
-# BABY IN BLOOM FEUD
+# BABY SHOWER FAMILY FEUD
 # Quickplay tournament + individual Fast Money championship
 # ============================================================
 
-st.set_page_config(page_title="Baby Shower Family Feud", layout="wide")
+st.set_page_config(page_title="Baby Shower Feud", layout="wide")
 
 SESSIONS_DIR = "game_sessions"
 DEFAULT_GAME_CODE = "default"
@@ -104,7 +104,7 @@ def default_state():
         "fast_money_started": False,
         "fast_money_start_time": 0,
         "fast_money_answers": {},
-        "message": "Welcome to Baby in Bloom Feud!",
+        "message": "Welcome to Baby Shower Family Feud!",
     }
 
 
@@ -622,7 +622,7 @@ def timer_remaining():
 
 
 def render_header():
-    st.markdown('<div class="main-title">Baby in Bloom Feud</div>', unsafe_allow_html=True)
+    st.markdown('<div class="main-title">Baby Shower Family Feud</div>', unsafe_allow_html=True)
     st.markdown('<div class="subtitle">Baby Shower Tournament Edition</div>', unsafe_allow_html=True)
 
 
